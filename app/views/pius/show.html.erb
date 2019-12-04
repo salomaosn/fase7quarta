@@ -1,0 +1,21 @@
+<p>
+  <strong>User:</strong>
+  <%= @piu.user_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @piu.content %>
+</p>
+
+<%= link_to 'Edit', edit_piu_path(@piu) %> |
+<%= link_to 'Back', pius_path %>
+
+<div>
+   <%= form_for @new_reply, :url => add_reply_pius_path(@piu), method: :post do |form| %>
+       <%= form.hidden_field :piu_id, value: @piu.id %>
+       <%= form.text_area :content %>
+ 
+       <%= form.submit "Enviar" %>
+   <% end %>
+</div>

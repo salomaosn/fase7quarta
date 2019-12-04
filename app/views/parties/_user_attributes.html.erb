@@ -1,0 +1,33 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <!-- <b>Nome: </b> --><%#= student.name %>
+    <b>Usuário: </b><%= student.username %>
+    <!-- <b>E-mail: </b> --><%#= student.email %>
+    <b>Level: </b><%= student.user_attribute.level %>
+    <%= form_for (student.user_attribute), :url => add_attribute_parties_path, :html => { :method => :post } do |form| %>
+      <%= hidden_field_tag :user_id, student.id %>
+      <div class="row text-center pt-3">
+        <div class="col">
+          <%= form.submit "health", class: "health button" %><br>
+          <%= student.user_attribute.health %>
+        </div>
+        <div class="col">
+          <%= form.submit "mana", class: "mana button" %><br>   
+          <%= student.user_attribute.mana %>
+        </div>
+        <div class="col">
+          <%= form.submit "gold", class: "gold button" %><br>
+          <%= student.user_attribute.gold %>
+        </div>
+        <div class="col">
+          <%= form.submit "experience", class: "experience button" %><br>
+          <%= student.user_attribute.experience %>
+        </div>
+        <div class="col">
+          <b>Quantidade</b><br>
+          <%= text_field_tag :amount, "", class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
